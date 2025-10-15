@@ -1,0 +1,27 @@
+# This GitHub Actions workflow is named "Read Hello File".
+# It is triggered on every push to the 'main' branch.
+# The workflow contains a single job called 'read-file' that runs on the latest Ubuntu runner.
+# Steps in the job:
+#   1. Checks out the repository using the official actions/checkout action.
+#   2. Prints the contents of 'hello.txt' to the workflow log for inspection.
+name: Read Hello File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  read-file:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Display hello.txt contents
+      - name: Print hello.txt contents
+        run: |
+          echo "=== Contents of hello.txt ==="
+          cat hello.txt
+          echo "============================="
